@@ -3,7 +3,7 @@ import { PRODUCTS_PER_PAGE } from '../../../components/Products';
 import { TYPES } from '../../types';
 
 export const getProducts =
-  ({ selectedPageIndex = 0, itemType, selectedTags, selectedBrands, allTags, allBrands }) =>
+  ({ selectedPageIndex = 0, itemType, selectedTags, selectedBrands, allBrands, sortingType }) =>
   async dispatch => {
     const filteredTags = selectedTags.includes('All') ? [] : selectedTags;
     const filteredBrands = selectedBrands.includes('All')
@@ -18,8 +18,9 @@ export const getProducts =
     const { data, headers } = await axios.get(
       `https://marketapp-api.herokuapp.com/items?_page=${
         selectedPageIndex + 1
-      }&_limit=16&itemType=${itemType}${tagsQuery}${brandsQuery}`,
+      }&_limit=16&itemType=${itemType}${tagsQuery}${brandsQuery}&_sort=${sortingType.value}&_order=${sortingType.type}`,
     );
+
     try {
       dispatch({
         payload: data,

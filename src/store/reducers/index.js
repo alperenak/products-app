@@ -5,6 +5,7 @@ import { companiesReducer } from './companies';
 import { paginationReducer } from './pagination';
 import { productsReducer } from './products';
 import { sidebarReducer } from './sidebar';
+import { sortingReducer } from './sorting';
 import { tagsReducer } from './tags';
 
 export default combineReducers({
@@ -15,4 +16,5 @@ export default combineReducers({
   brands: brandsReducer,
   companies: companiesReducer,
   tags: tagsReducer,
+  sorting: sortingReducer,
 });

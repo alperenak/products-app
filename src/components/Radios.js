@@ -34,8 +34,8 @@ const StyledRadioLabel = styled.div`
   margin-left: 12px;
 `;
 
-export const Radios = ({ data, onChange, ...rest }) => {
-  const [selectedRadioId, setSelectedRadioId] = React.useState();
+export const Radios = ({ data, onChange, selectedOptionId, ...rest }) => {
+  const [selectedRadioId, setSelectedRadioId] = React.useState(selectedOptionId);
 
   const handleClick = id => {
     setSelectedRadioId(id);
@@ -59,4 +59,5 @@ export const Radios = ({ data, onChange, ...rest }) => {
 Radios.propTypes = {
   data: Proptypes.array.isRequired,
   onChange: Proptypes.func.isRequired,
+  selectedOptionId: Proptypes.string,
 };

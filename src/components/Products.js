@@ -79,9 +79,10 @@ export const Products = () => {
   const dispatch = useDispatch();
   const { products, allProducts, productsCount, itemType, filteredProducts } = useSelector(state => state.products);
   const { allBrands, selectedBrands } = useSelector(state => state.brands);
-  const { allTags, selectedTags } = useSelector(state => state.tags);
+  const { selectedTags } = useSelector(state => state.tags);
   const { selectedPageIndex } = useSelector(state => state.pagination);
   const { allCompanies } = useSelector(state => state.companies);
+  const { sortingType } = useSelector(state => state.sorting);
 
   React.useEffect(() => {
     dispatch(getAllProducts());
@@ -99,8 +100,8 @@ export const Products = () => {
   }, [dispatch, filteredProducts]);
 
   React.useEffect(() => {
-    dispatch(getProducts({ selectedPageIndex, itemType, selectedTags, selectedBrands, allTags, allBrands }));
-  }, [dispatch, selectedPageIndex, itemType, selectedTags, selectedBrands, allTags, allBrands]);
+    dispatch(getProducts({ selectedPageIndex, itemType, selectedTags, selectedBrands, allBrands, sortingType }));
+  }, [dispatch, selectedPageIndex, itemType, selectedTags, selectedBrands, sortingType, allBrands]);
 
   React.useEffect(() => dispatch(getProductsByItemType(allProducts, itemType)), [dispatch, allProducts, itemType]);
 
