@@ -20,6 +20,7 @@ const StyledCounterWrapper = styled.div`
 
 const StyledProduct = styled.div`
   padding-left: 6px;
+  width: 160px;
 `;
 
 const StyledProductName = styled.div`
@@ -36,7 +37,7 @@ const StyledProductPrice = styled.div`
   line-height: 18px;
   letter-spacing: 0.16px;
   color: #1ea4ce;
-  width: 100px; ;
+  line-break: break-word;
 `;
 
 const StyledCounter = styled.div`

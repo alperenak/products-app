@@ -63,7 +63,7 @@ const StyledCheckbox = styled(Checkbox)`
 `;
 
 const StyledRadios = styled(Radios)`
-  padding: 12px;/
+  padding: 12px;
 `;
 
 const StyledBackgroundFilter = styled.div`
@@ -77,6 +77,7 @@ const StyledBackgroundFilter = styled.div`
     height: 100%;
     width: 100%;
     transition: ${({ isOpen }) => isOpen && '0.2s opacity'};
+    z-index: 1;
   }
 `;
 

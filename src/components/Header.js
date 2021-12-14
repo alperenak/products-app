@@ -83,6 +83,8 @@ const StyledBasketList = styled(BasketList)`
 `;
 
 const StyledMenu = styled(Menu)`
+  display: none;
+
   ${mediaBreakpointDown(980)} {
     display: block;
     position: absolute;
@@ -106,7 +108,6 @@ const StyledMenuWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  display: none;
 
   ${mediaBreakpointDown(500)} {
     display: flex;
