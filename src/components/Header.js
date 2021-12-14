@@ -103,6 +103,7 @@ const StyledMenuWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  display: none;
 
   ${mediaBreakpointDown(500)} {
     display: flex;

@@ -11,7 +11,7 @@ import { sortingReducer } from './sorting';
 import { tagsReducer } from './tags';
 
 const persistConfig = {
-  key: 'root',
+  key: 'marketAppStorage',
   storage,
   whitelist: ['basket', 'tags', 'sorting', 'brands', 'pagination', 'products'],
 };
