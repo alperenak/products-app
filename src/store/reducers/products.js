@@ -3,6 +3,7 @@ import { TYPES } from '../types';
 const initialState = {
   allProducts: [],
   products: [],
+  productsLoading: false,
   filteredProducts: [],
   productsCount: 0,
   itemType: 'mug',
@@ -24,6 +25,8 @@ export const productsReducer = (state = initialState, action) => {
       return { ...state, allProducts: action.payload };
     case TYPES.GET_PRODUCTS_BY_ITEM_TYPE:
       return { ...state, filteredProducts: action.payload };
+    case TYPES.SET_PRODUCTS_LOADING:
+      return { ...state, productsLoading: action.payload };
     default:
       return state;
   }

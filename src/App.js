@@ -8,8 +8,6 @@ import { Footer } from './components/Footer';
 import { mediaBreakpointDown } from './lib/mediaQueries';
 import { useSelector } from 'react-redux';
 
-// TODO Create Loading component
-
 const StyledMainWrapper = styled.div`
   width: 100%;
   height: 100%;

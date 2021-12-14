@@ -21,7 +21,10 @@ export const getProducts =
       }&_limit=16&itemType=${itemType}${tagsQuery}${brandsQuery}&_sort=${sortingType.value}&_order=${sortingType.type}`,
     );
 
+    dispatch({ type: TYPES.SET_PRODUCTS_LOADING, payload: true });
+
     try {
+      if (data) dispatch({ type: TYPES.SET_PRODUCTS_LOADING, payload: false });
       dispatch({
         payload: data,
         type: TYPES.GET_PRODUCTS,

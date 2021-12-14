@@ -10,6 +10,7 @@ import { getProductsByItemType } from '../store/actions/products/getProductsByIt
 import { getAllTags } from '../store/actions/tags/getAllTags';
 import { TYPES } from '../store/types';
 import { ButtonGroup } from './ButtonGroup';
+import { Loading } from './Loading';
 import { Pagination } from './Pagination';
 import { ProductCard } from './ProductCard';
 
@@ -53,6 +54,7 @@ const StyledProductContent = styled.div`
   flex-wrap: wrap;
   display: flex;
   align-content: flex-start;
+  position: relative;
 
   ${mediaBreakpointDown('tablet')} {
     width: 95%;
@@ -77,7 +79,9 @@ const StyledPagination = styled(Pagination)`
 
 export const Products = () => {
   const dispatch = useDispatch();
-  const { products, allProducts, productsCount, itemType, filteredProducts } = useSelector(state => state.products);
+  const { products, allProducts, productsCount, itemType, filteredProducts, productsLoading } = useSelector(
+    state => state.products,
+  );
   const { allBrands, selectedBrands } = useSelector(state => state.brands);
   const { selectedTags } = useSelector(state => state.tags);
   const { selectedPageIndex } = useSelector(state => state.pagination);
@@ -122,6 +126,8 @@ export const Products = () => {
 
   React.useEffect(() => dispatch(getProductsByItemType(allProducts, itemType)), [dispatch, allProducts, itemType]);
 
+  console.log(productsLoading);
+
   return (
     <StyledProducts>
       <StyledProductTitle>Products</StyledProductTitle>
@@ -135,18 +141,20 @@ export const Products = () => {
       <StyledProductContent>
         {products.map(product => (
           <StyledProductCard
-            key={product.name}
+            key={product.added}
             name={product.name}
             price={product.price}
             image="https://picsum.photos/200/200"
             onClick={() => handleOnClick(product)}
           />
         ))}
+
+        {productsLoading && <Loading />}
       </StyledProductContent>
       <StyledPagination
         pageCount={Math.ceil(productsCount / PRODUCTS_PER_PAGE)}
         selectedPageIndex={selectedPageIndex}
-        onChange={pageIndex => dispatch(getProducts(pageIndex, itemType))}
+        onChange={pageIndex => dispatch({ type: TYPES.SET_PAGIATION_SELECTED_PAGE_INDEX, payload: pageIndex })}
       />
     </StyledProducts>
   );

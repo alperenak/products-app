@@ -6,11 +6,6 @@ import { ReactComponent as NextIcon } from '../assets/icons/arrow-right.svg';
 import { ReactComponent as PrevIcon } from '../assets/icons/arrow-left.svg';
 import { ReactComponent as ThreeDots } from '../assets/icons/threeDots.svg';
 import { mediaBreakpointDown } from '../lib/mediaQueries';
-import { useDispatch } from 'react-redux';
-import { TYPES } from '../store/types';
-
-// TODO break-link height width 100%
-// TODO dont use redux in component use outside
 
 const StyledLabel = styled.div`
   display: flex;
@@ -89,11 +84,13 @@ const StyledReactPaginate = styled(ReactPaginate)`
   }
 
   .rp-break {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 32px;
     height: 40px;
+    cursor: pointer;
+
+    &:hover svg {
+      fill: #1ea4ce;
+    }
 
     ${mediaBreakpointDown(500)} {
       display: none;
@@ -103,6 +100,11 @@ const StyledReactPaginate = styled(ReactPaginate)`
   .rp-break-link {
     color: #697488;
     line-height: 2.08px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .selected {
@@ -153,8 +155,7 @@ const StyledThreeDots = styled(ThreeDots)`
 `;
 
 export const Pagination = ({ pageCount, onChange, selectedPageIndex = 0, ...rest }) => {
-  const dispatch = useDispatch();
-  const handlePageClick = event => dispatch({ type: TYPES.SET_PAGIATION_SELECTED_PAGE_INDEX, payload: event.selected });
+  const handlePageClick = event => onChange(event.selected);
 
   const getLabel = React.useCallback(({ isNext }) => {
     return (

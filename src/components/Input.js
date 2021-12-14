@@ -9,6 +9,7 @@ const StyledInput = styled.input`
   height: 48px;
   outline: none;
   width: 100%;
+  font-family: 'Inter', sans-serif;
 
   &::placeholder {
     font-family: 'Inter', sans-serif;

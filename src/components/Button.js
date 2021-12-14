@@ -13,7 +13,7 @@ const StyledButton = styled.div`
   border-radius: 2px;
   font-weight: 600;
   font-size: 12px;
-  line-height: 20px; ;
+  line-height: 20px;
 `;
 
 export const Button = ({ children, onClick, ...rest }) => {
