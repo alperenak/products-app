@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { PRODUCTS_PER_PAGE } from '../../../components/Products';
 import { TYPES } from '../../types';
 
 export const getProducts =
@@ -28,6 +29,13 @@ export const getProducts =
         payload: headers['x-total-count'],
         type: TYPES.GET_PRODUCTS_COUNT,
       });
+
+      if (headers['x-total-count'] / PRODUCTS_PER_PAGE <= selectedPageIndex) {
+        dispatch({
+          payload: 0,
+          type: TYPES.SET_PAGIATION_SELECTED_PAGE_INDEX,
+        });
+      }
     } catch (error) {
       console.error(error);
     }

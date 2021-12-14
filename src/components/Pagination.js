@@ -152,7 +152,7 @@ const StyledThreeDots = styled(ThreeDots)`
   }
 `;
 
-export const Pagination = ({ pageCount, onChange, ...rest }) => {
+export const Pagination = ({ pageCount, onChange, selectedPageIndex = 0, ...rest }) => {
   const dispatch = useDispatch();
   const handlePageClick = event => dispatch({ type: TYPES.SET_PAGIATION_SELECTED_PAGE_INDEX, payload: event.selected });
 
@@ -180,6 +180,7 @@ export const Pagination = ({ pageCount, onChange, ...rest }) => {
       pageCount={pageCount}
       previousLabel={getLabel({ isNext: false })}
       renderOnZeroPageCount={null}
+      forcePage={selectedPageIndex}
       {...rest}
     />
   );
@@ -187,4 +188,5 @@ export const Pagination = ({ pageCount, onChange, ...rest }) => {
 
 Pagination.propTypes = {
   pageCount: Proptypes.number.isRequired,
+  selectedPageIndex: Proptypes.number.isRequired,
 };

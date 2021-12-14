@@ -18,7 +18,7 @@ const ITEM_TYPES = [
   { id: 'shirt', value: 'shirt' },
 ];
 
-const PRODUCTS_PER_PAGE = 16;
+export const PRODUCTS_PER_PAGE = 16;
 
 const StyledProducts = styled.div`
   margin: 36.38px 16px 0;
@@ -120,6 +120,7 @@ export const Products = () => {
       </StyledProductContent>
       <StyledPagination
         pageCount={Math.ceil(productsCount / PRODUCTS_PER_PAGE)}
+        selectedPageIndex={selectedPageIndex}
         onChange={pageIndex => {
           dispatch(getProducts(pageIndex, itemType));
         }}
