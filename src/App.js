@@ -6,6 +6,7 @@ import { Products } from './components/Products';
 import { BasketList } from './components/BasketList';
 import { Footer } from './components/Footer';
 import { mediaBreakpointDown } from './lib/mediaQueries';
+import { useSelector } from 'react-redux';
 
 // TODO Create Loading component
 
@@ -24,9 +25,10 @@ const StyledBasketList = styled(BasketList)`
 `;
 
 function App() {
+  const { sidebarIsOpen } = useSelector(state => state.sidebar);
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle sidebarIsOpen={sidebarIsOpen} />
       <Header />
       <StyledMainWrapper>
         <Sidebar />

@@ -7,10 +7,15 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
     user-select: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+    -webkit-tap-highlight-color: transparent;
+    outline: none !important;
   }
 
   body {
-      background-color: #fafafa;
+    background-color: #fafafa;
+    overflow: ${({ sidebarIsOpen }) => sidebarIsOpen && 'hidden'}
+
   }
 
   &::-webkit-scrollbar {

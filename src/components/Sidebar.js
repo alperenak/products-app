@@ -33,10 +33,8 @@ const StyledSidebar = styled.div`
     z-index: 1;
     padding: 38.36px 10px;
     overflow-y: auto;
-
-    body {
-      overflow: ${({ isOpen }) => (isOpen ? 'hidden' : 'auto')};
-    }
+    padding-bottom: 100px;
+    -webkit-overflow-scrolling: touch;
   }
 `;
 

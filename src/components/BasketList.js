@@ -14,6 +14,7 @@ const StyledBasketList = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 40.88px;
+  outline: none;
 `;
 
 const StyledBasketInnerWrapper = styled.div`
