@@ -137,15 +137,17 @@ export const Products = () => {
         selectedButtonId={itemType}
       />
       <StyledProductContent>
-        {products.map(product => (
-          <StyledProductCard
-            key={product.added}
-            name={product.name}
-            price={product.price}
-            image="https://picsum.photos/200/200"
-            onClick={() => handleOnClick(product)}
-          />
-        ))}
+        {products.length !== 0
+          ? products.map(product => (
+              <StyledProductCard
+                key={product.added}
+                name={product.name}
+                price={product.price}
+                image="https://picsum.photos/200/200"
+                onClick={() => handleOnClick(product)}
+              />
+            ))
+          : 'No items'}
 
         {productsLoading && <Loading />}
       </StyledProductContent>

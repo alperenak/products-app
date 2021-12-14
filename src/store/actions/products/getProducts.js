@@ -14,7 +14,7 @@ export const getProducts =
     const tagsQuery = filteredTags.map(tag => `&tags_like=${tag}`).join('');
 
     const { data, headers } = await axios.get(
-      `https://marketapp-api.herokuapp.com/items?_page=${
+      `https://products-app-market.herokuapp.com/items?_page=${
         selectedPageIndex + 1
       }&_limit=16&itemType=${itemType}${tagsQuery}${brandsQuery}&_sort=${sortingType.value}&_order=${sortingType.type}`,
     );
