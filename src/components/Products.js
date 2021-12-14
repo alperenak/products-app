@@ -130,6 +130,7 @@ export const Products = () => {
         onChange={({ value }) => {
           dispatch({ type: TYPES.SET_PRODUCTS_ITEM_TYPE, payload: value });
         }}
+        selectedButtonId={itemType}
       />
       <StyledProductContent>
         {products.map(product => (

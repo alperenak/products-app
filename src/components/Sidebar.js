@@ -86,6 +86,7 @@ export const Sidebar = () => {
   const { selectedBrands } = useSelector(state => state.brands);
   const { brands, allBrands } = useSelector(state => state.brands);
   const { tags, allTags, selectedTags } = useSelector(state => state.tags);
+  const { selectedSortingId } = useSelector(state => state.sorting);
   const dispatch = useDispatch();
 
   const handleOnChangeBrands = (checked, brandName) => {
@@ -99,6 +100,7 @@ export const Sidebar = () => {
   };
 
   const handleOnChangeSorting = id => {
+    dispatch({ type: TYPES.SET_SELECTED_SORTING_ID, payload: id });
     if (id === 'priceLowToHigh') dispatch({ type: TYPES.SET_SORTING_TYPE, payload: { value: 'price', type: 'asc' } });
     if (id === 'priceHighToLow') dispatch({ type: TYPES.SET_SORTING_TYPE, payload: { value: 'price', type: 'desc' } });
     if (id === 'newToOld') dispatch({ type: TYPES.SET_SORTING_TYPE, payload: { value: 'added', type: 'desc' } });
@@ -109,11 +111,7 @@ export const Sidebar = () => {
     <>
       <StyledSidebar isOpen={sidebarIsOpen}>
         <StyledCard title="Sorting" type="sm">
-          <StyledRadios
-            data={SORTING_OPTIONS}
-            onChange={handleOnChangeSorting}
-            selectedOptionId={SORTING_OPTIONS[0].id}
-          />
+          <StyledRadios data={SORTING_OPTIONS} onChange={handleOnChangeSorting} selectedOptionId={selectedSortingId} />
         </StyledCard>
         <StyledCard title="Brands" type="sm">
           <StyledInput placeholder="Search brands" onChange={e => dispatch(filterBrands(allBrands, e.target.value))} />

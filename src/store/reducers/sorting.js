@@ -2,6 +2,7 @@ import { TYPES } from '../types';
 
 const initialState = {
   sortingType: { value: 'price', type: 'asc' },
+  selectedSortingId: 'priceLowToHigh',
 };
 
 export const sortingReducer = (state = initialState, action) => {
@@ -11,7 +12,11 @@ export const sortingReducer = (state = initialState, action) => {
         ...state,
         sortingType: action.payload,
       };
-
+    case TYPES.SET_SELECTED_SORTING_ID:
+      return {
+        ...state,
+        selectedSortingId: action.payload,
+      };
     default:
       return state;
   }

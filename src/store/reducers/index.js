@@ -1,3 +1,5 @@
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 import { combineReducers } from 'redux';
 import { basketReducer } from './basket';
 import { brandsReducer } from './brands';
@@ -8,7 +10,13 @@ import { sidebarReducer } from './sidebar';
 import { sortingReducer } from './sorting';
 import { tagsReducer } from './tags';
 
-export default combineReducers({
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['basket', 'tags', 'sorting', 'brands', 'pagination', 'products'],
+};
+
+const rootReducer = combineReducers({
   sidebar: sidebarReducer,
   products: productsReducer,
   pagination: paginationReducer,
@@ -18,3 +26,5 @@ export default combineReducers({
   tags: tagsReducer,
   sorting: sortingReducer,
 });
+
+export default persistReducer(persistConfig, rootReducer);

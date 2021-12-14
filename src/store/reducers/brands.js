@@ -35,7 +35,7 @@ export const brandsReducer = (state = initialState, action) => {
     case TYPES.FILTER_BRANDS:
       return {
         ...state,
-        filteredBrands: action.payload,
+        brands: action.payload,
       };
 
     default:

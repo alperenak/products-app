@@ -23,8 +23,8 @@ const StyledButton = styled.div`
   line-height: 18px;
 `;
 
-export const ButtonGroup = ({ data, onChange, ...rest }) => {
-  const [activeButtonId, setActiveButtonId] = React.useState(data[0].id);
+export const ButtonGroup = ({ data, onChange, selectedButtonId, ...rest }) => {
+  const [activeButtonId, setActiveButtonId] = React.useState(selectedButtonId ?? data[0].id);
   const handleOnClick = (id, value) => {
     setActiveButtonId(id);
     if (onChange) onChange({ id, value });
