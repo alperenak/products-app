@@ -83,6 +83,23 @@ export const Products = () => {
   const { selectedPageIndex } = useSelector(state => state.pagination);
   const { allCompanies } = useSelector(state => state.companies);
   const { sortingType } = useSelector(state => state.sorting);
+  const { basketList } = useSelector(state => state.basket);
+
+  const handleOnClick = product => {
+    if (basketList.length > 0) {
+      basketList.forEach(item => {
+        if (item.name === product.name) {
+          dispatch({ type: TYPES.INCREASE_BASKET_ITEM_QUANTITY, payload: product.name });
+        }
+      });
+    }
+    if (!basketList.map(item => item.name).includes(product.name)) {
+      dispatch({
+        type: TYPES.SET_BASKET_LIST,
+        payload: { name: product.name, price: product.price, count: 1 },
+      });
+    }
+  };
 
   React.useEffect(() => {
     dispatch(getAllProducts());
@@ -116,15 +133,18 @@ export const Products = () => {
       />
       <StyledProductContent>
         {products.map(product => (
-          <StyledProductCard name={product.name} price={product.price} image="https://picsum.photos/200/200" />
+          <StyledProductCard
+            name={product.name}
+            price={product.price}
+            image="https://picsum.photos/200/200"
+            onClick={() => handleOnClick(product)}
+          />
         ))}
       </StyledProductContent>
       <StyledPagination
         pageCount={Math.ceil(productsCount / PRODUCTS_PER_PAGE)}
         selectedPageIndex={selectedPageIndex}
-        onChange={pageIndex => {
-          dispatch(getProducts(pageIndex, itemType));
-        }}
+        onChange={pageIndex => dispatch(getProducts(pageIndex, itemType))}
       />
     </StyledProducts>
   );

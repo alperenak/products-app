@@ -49,7 +49,7 @@ const StyledImageInnerWrapper = styled.div`
   justify-content: center;
 `;
 
-export const ProductCard = ({ price, image, name, ...rest }) => {
+export const ProductCard = ({ price, image, name, onClick, ...rest }) => {
   return (
     <StyledProductCard {...rest}>
       <StyledImageWrapper>
@@ -59,7 +59,7 @@ export const ProductCard = ({ price, image, name, ...rest }) => {
       </StyledImageWrapper>
       <StyledProductPrice>₺ {price}</StyledProductPrice>
       <StyledProductName>{name}</StyledProductName>
-      <Button>Add</Button>
+      <Button onClick={onClick}>Add</Button>
     </StyledProductCard>
   );
 };
@@ -68,4 +68,5 @@ ProductCard.propTypes = {
   price: Proptypes.number,
   image: Proptypes.string,
   name: Proptypes.string,
+  onClick: Proptypes.func,
 };

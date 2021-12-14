@@ -6,7 +6,7 @@ import { ReactComponent as Menu } from '../assets/icons/menu.svg';
 import { mediaBreakpointDown } from '../lib/mediaQueries';
 import { Dropdown } from './Dropdown';
 import { BasketList } from './BasketList';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TYPES } from '../store/types';
 
 const StyledHeader = styled.div`
@@ -50,7 +50,7 @@ const StyledBasket = styled.div`
   }
 `;
 
-const StyledInnerWrapper = styled.div`
+const StyledBasketInnerWrapper = styled.div`
   width: 81px;
   height: 24.53px;
   display: flex;
@@ -65,6 +65,7 @@ const StyledBasketPrice = styled.div`
   color: #ffffff;
   text-align: center;
   height: 18.39px;
+  white-space: nowrap;
 `;
 
 const StyledBasketWrapper = styled.div`
@@ -115,6 +116,7 @@ const StyledMenuWrapper = styled.div`
 export const Header = () => {
   const basketListRef = React.useRef(null);
   const dispatch = useDispatch();
+  const { totalPrice } = useSelector(state => state.basket);
 
   return (
     <StyledHeader>
@@ -126,10 +128,10 @@ export const Header = () => {
         <StyledBasketWrapper>
           <Dropdown content={<StyledBasketList ref={basketListRef} />}>
             <StyledBasket onClick={() => dispatch({ type: TYPES.SET_TOGGLE_BASKET })}>
-              <StyledInnerWrapper>
+              <StyledBasketInnerWrapper>
                 <Basket />
-                <StyledBasketPrice>₺ 39,97</StyledBasketPrice>
-              </StyledInnerWrapper>
+                <StyledBasketPrice>₺ {totalPrice}</StyledBasketPrice>
+              </StyledBasketInnerWrapper>
             </StyledBasket>
           </Dropdown>
         </StyledBasketWrapper>

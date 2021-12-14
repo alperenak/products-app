@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { TYPES } from '../store/types';
 import { Counter } from './Counter';
 
 const StyledBasketList = styled.div`
@@ -47,18 +49,38 @@ const StyledCounterWrapper = styled.div`
 `;
 
 export const BasketList = ({ ref, ...rest }) => {
+  const { basketList, totalPrice } = useSelector(state => state.basket);
+
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    const total = basketList.reduce((acc, item) => {
+      return acc + item.price * item.count;
+    }, 0);
+
+    dispatch({ type: TYPES.SET_BASKET_TOTAL_PRICE, payload: total.toFixed(2) });
+  }, [basketList, dispatch]);
+
+  const handleOnChange = (name, count) => {
+    if (count === 0) dispatch({ type: TYPES.REMOVE_FROM_BASKET_LIST, payload: name });
+    else dispatch({ type: TYPES.SET_BASKET_ITEM_QUANTITY, payload: { name, count } });
+  };
   return (
     <StyledBasketList ref={ref} {...rest}>
       <StyledBasketInnerWrapper>
         <StyledCounterWrapper>
-          <Counter price={14.99} name="Example Product" itemCount={1} />
-          <Counter price={14.99} name="Example Product" itemCount={1} />
-          <Counter price={14.99} name="Example Product" itemCount={1} />
-          <Counter price={14.99} name="Example Product" itemCount={1} />
-          <Counter price={14.99} name="Example Product" itemCount={1} />
-          <Counter price={14.99} name="Example Product" itemCount={1} />
+          {basketList.length !== 0
+            ? basketList.map(item => (
+                <Counter
+                  price={item.price}
+                  name={item.name}
+                  itemCount={item.count}
+                  onChange={count => handleOnChange(item.name, count)}
+                />
+              ))
+            : 'No items in basket'}
         </StyledCounterWrapper>
-        <StyledBasketTotalPrice>₺39,97</StyledBasketTotalPrice>
+        <StyledBasketTotalPrice>₺{totalPrice}</StyledBasketTotalPrice>
       </StyledBasketInnerWrapper>
     </StyledBasketList>
   );
