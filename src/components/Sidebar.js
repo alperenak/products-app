@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { mediaBreakpointDown } from '../lib/mediaQueries';
+import { filterBrands } from '../store/actions/brands/filterBrands';
+import { filterTags } from '../store/actions/tags/filterTags';
 import { TYPES } from '../store/types';
 import { Card } from './Card';
 import { Checkbox } from './Checkbox';
@@ -83,8 +85,8 @@ export const Sidebar = () => {
   const { sidebarIsOpen } = useSelector(state => state.sidebar);
   const { selectedBrands } = useSelector(state => state.brands);
 
-  const { brands } = useSelector(state => state.brands);
-  const { tags } = useSelector(state => state.tags);
+  const { brands, allBrands } = useSelector(state => state.brands);
+  const { tags, allTags } = useSelector(state => state.tags);
   const dispatch = useDispatch();
 
   const handleOnChangeBrands = (checked, brandName) => {
@@ -104,7 +106,7 @@ export const Sidebar = () => {
           <StyledRadios data={SORTING_OPTIONS} />
         </StyledCard>
         <StyledCard title="Brands" type="sm">
-          <StyledInput placeholder="Search Brands" />
+          <StyledInput placeholder="Search brands" onChange={e => dispatch(filterBrands(allBrands, e.target.value))} />
           <StyledCheckboxContent>
             {brands.map(brand => (
               <StyledCheckbox
@@ -112,19 +114,21 @@ export const Sidebar = () => {
                 count={brand.count}
                 checked={selectedBrands.includes(brand.name)}
                 onChange={checked => handleOnChangeBrands(checked, brand.name)}
+                key={brand.name}
               />
             ))}
           </StyledCheckboxContent>
         </StyledCard>
         <StyledCard title="Tags" type="sm">
-          <StyledInput placeholder="Search Brands" />
+          <StyledInput placeholder="Search tags" onChange={e => dispatch(filterTags(allTags, e.target.value))} />
           <StyledCheckboxContent>
             {tags.map(tag => (
               <StyledCheckbox
                 label={tag.name}
                 count={tag.count}
                 checked={selectedBrands.includes(tag.name)}
-                onChange={handleOnChangeTags}
+                onChange={checked => handleOnChangeTags(checked, tag.name)}
+                key={tag.name}
               />
             ))}
           </StyledCheckboxContent>

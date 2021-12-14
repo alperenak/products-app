@@ -27,6 +27,6 @@ export const Input = ({ placeholder, onChange, ...rest }) => {
 };
 
 Input.propTypes = {
-  placeholder: Proptypes.string,
+  placeholder: Proptypes.string.isRequired,
   onChange: Proptypes.func,
 };

@@ -11,6 +11,7 @@ export const getBrands =
       return {
         count: itemLength,
         name: brand.name,
+        slug: brand.slug,
       };
     });
 

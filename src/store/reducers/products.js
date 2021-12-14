@@ -16,7 +16,7 @@ export const productsReducer = (state = initialState, action) => {
         ...state,
         products: action.payload,
       };
-    case TYPES.GET_PRODUCTS_LENGTH:
+    case TYPES.GET_PRODUCTS_COUNT:
       return { ...state, productsCount: action.payload };
     case TYPES.SET_PRODUCTS_ITEM_TYPE:
       return { ...state, itemType: action.payload };

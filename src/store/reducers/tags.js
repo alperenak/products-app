@@ -1,6 +1,7 @@
 import { TYPES } from '../types';
 
 const initialState = {
+  allTags: [],
   tags: [],
   selectedTags: ['All'],
 };
@@ -10,6 +11,7 @@ export const tagsReducer = (state = initialState, action) => {
     case TYPES.GET_ALL_TAGS:
       return {
         ...state,
+        allTags: action.payload,
         tags: action.payload,
       };
 
@@ -22,7 +24,12 @@ export const tagsReducer = (state = initialState, action) => {
     case TYPES.EXCLUDE_SELECTED_TAGS:
       return {
         ...state,
-        selectedTags: action.payload !== 'All' ? state.selectedTags.filter(item => item !== action.payload) : [],
+        selectedTags: state.selectedTags.filter(item => item !== action.payload),
+      };
+    case TYPES.FILTER_TAGS:
+      return {
+        ...state,
+        tags: action.payload,
       };
 
     default:

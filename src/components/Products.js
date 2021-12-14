@@ -7,7 +7,6 @@ import { getAllCompanies } from '../store/actions/companies/getAllCompanies';
 import { getAllProducts } from '../store/actions/products/getAllProducts';
 import { getProducts } from '../store/actions/products/getProducts';
 import { getProductsByItemType } from '../store/actions/products/getProductsByItemType';
-import { getProductsCount } from '../store/actions/products/getProductsCount';
 import { getAllTags } from '../store/actions/tags/getAllTags';
 import { TYPES } from '../store/types';
 import { ButtonGroup } from './ButtonGroup';
@@ -79,6 +78,8 @@ const StyledPagination = styled(Pagination)`
 export const Products = () => {
   const dispatch = useDispatch();
   const { products, allProducts, productsCount, itemType, filteredProducts } = useSelector(state => state.products);
+  const { allBrands, selectedBrands } = useSelector(state => state.brands);
+  const { allTags, selectedTags } = useSelector(state => state.tags);
   const { selectedPageIndex } = useSelector(state => state.pagination);
   const { allCompanies } = useSelector(state => state.companies);
 
@@ -98,14 +99,10 @@ export const Products = () => {
   }, [dispatch, filteredProducts]);
 
   React.useEffect(() => {
-    dispatch(getProducts(selectedPageIndex, itemType));
-  }, [dispatch, selectedPageIndex, itemType]);
+    dispatch(getProducts({ selectedPageIndex, itemType, selectedTags, selectedBrands, allTags, allBrands }));
+  }, [dispatch, selectedPageIndex, itemType, selectedTags, selectedBrands, allTags, allBrands]);
 
   React.useEffect(() => dispatch(getProductsByItemType(allProducts, itemType)), [dispatch, allProducts, itemType]);
-
-  React.useEffect(() => {
-    dispatch(getProductsCount(products));
-  }, [products, dispatch]);
 
   return (
     <StyledProducts>

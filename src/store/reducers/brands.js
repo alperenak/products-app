@@ -1,6 +1,7 @@
 import { TYPES } from '../types';
 
 const initialState = {
+  allBrands: [],
   brands: [],
   selectedBrands: ['All'],
 };
@@ -10,6 +11,7 @@ export const brandsReducer = (state = initialState, action) => {
     case TYPES.GET_ALL_BRANDS:
       return {
         ...state,
+        allBrands: action.payload,
         brands: action.payload,
       };
 
@@ -22,7 +24,13 @@ export const brandsReducer = (state = initialState, action) => {
     case TYPES.EXCLUDE_SELECTED_BRANDS:
       return {
         ...state,
-        selectedBrands: action.payload !== 'All' ? state.selectedBrands.filter(item => item !== action.payload) : [],
+        selectedBrands: state.selectedBrands.filter(item => item !== action.payload),
+      };
+
+    case TYPES.FILTER_BRANDS:
+      return {
+        ...state,
+        filteredBrands: action.payload,
       };
 
     default:
