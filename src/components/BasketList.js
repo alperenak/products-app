@@ -22,7 +22,7 @@ const StyledBasketInnerWrapper = styled.div`
   height: 321.9px;
   width: 280px;
   border-radius: 2px;
-  padding: 26.27px 16px 16.66px;
+  padding: 26.27px 8px 16.66px;
   position: relative;
 `;
 
@@ -45,7 +45,9 @@ const StyledBasketTotalPrice = styled.div`
 
 const StyledCounterWrapper = styled.div`
   height: calc(100% - 65px);
-  overflow-y: auto;
+  overflow-y: scroll;
+  padding: 0 8px;
+  color: #191919;
 `;
 
 export const BasketList = ({ ref, ...rest }) => {

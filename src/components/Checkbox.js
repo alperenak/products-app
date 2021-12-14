@@ -34,6 +34,7 @@ const StyledCheckboxLabelText = styled.span`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.16px;
+  color: #525252;
 `;
 
 const StyledCheckboxCount = styled.span`
@@ -60,7 +61,7 @@ export const Checkbox = ({ checked = false, label, onChange, count, ...rest }) =
       <StyledCheckbox isChecked={isChecked}>
         {isChecked && <Check width={10.67} height={7.33} stroke="#fff" />}
       </StyledCheckbox>
-      <StyledCheckboxLabel>
+      <StyledCheckboxLabel title={`${label} (${count})`}>
         <StyledCheckboxLabelText>{label}</StyledCheckboxLabelText>
         <StyledCheckboxCount> ({count})</StyledCheckboxCount>
       </StyledCheckboxLabel>

@@ -32,6 +32,7 @@ const StyledRadioLabel = styled.div`
   font-size: 14px;
   line-height: 18px;
   margin-left: 12px;
+  color: #525252;
 `;
 
 export const Radios = ({ data, onChange, selectedOptionId, ...rest }) => {

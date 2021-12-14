@@ -9,10 +9,12 @@ const StyledCounterWrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   border-bottom: 1.02px solid #f4f4f4;
-  height: 59.29px;
+  height: 76.64px;
+  padding-top: 17.35px;
 
-  &:not(:first-child) {
-    margin-top: 17.35px;
+  &:first-child {
+    height: 59.29px;
+    padding: 0;
   }
 `;
 
@@ -25,6 +27,7 @@ const StyledProductName = styled.div`
   font-weight: 400;
   line-height: 18px;
   letter-spacing: 0.16px;
+  color: #191919;
 `;
 
 const StyledProductPrice = styled.div`
@@ -33,6 +36,7 @@ const StyledProductPrice = styled.div`
   line-height: 18px;
   letter-spacing: 0.16px;
   color: #1ea4ce;
+  width: 100px; ;
 `;
 
 const StyledCounter = styled.div`
@@ -42,7 +46,7 @@ const StyledCounter = styled.div`
   justify-content: space-between;
   align-items: center;
   user-select: none;
-  margin-right: 11px;
+  margin-right: 7px;
 `;
 
 const StyledCount = styled.div`
