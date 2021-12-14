@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { mediaBreakpointDown } from './mediaQueries';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -14,7 +15,10 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: #fafafa;
-    overflow: ${({ sidebarIsOpen }) => sidebarIsOpen && 'hidden'}
+
+    ${mediaBreakpointDown(980)} {
+      overflow: ${({ sidebarIsOpen }) => sidebarIsOpen && 'hidden'}
+    }
 
   }
 
