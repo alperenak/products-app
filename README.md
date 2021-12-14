@@ -10,6 +10,13 @@ In the project directory, you can run:
 
 ### `yarn start`
 
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console
+
 ## Links
 Products App Backend : [API (JSON Server)](https://products-app-market.herokuapp.com/)<br>
 Products App Frontend :  [Netlify App](https://products-app-market.herokuapp.com/)
@@ -60,12 +67,3 @@ products-app/
 - [React Paginate](https://www.npmjs.com/package/react-paginate)
 - [JSON Server](https://github.com/typicode/json-server)
 - [Axios](https://github.com/axios/axios)
-
-
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
