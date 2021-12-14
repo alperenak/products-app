@@ -1,10 +1,10 @@
-import { Header } from './components/Header';
+import { Header } from './layouts/Header';
 import GlobalStyle from './lib/globalStyles';
 import styled from 'styled-components';
-import { Sidebar } from './components/Sidebar';
-import { Products } from './components/Products';
-import { BasketList } from './components/BasketList';
-import { Footer } from './components/Footer';
+import { Sidebar } from './layouts/Sidebar';
+import { Products } from './layouts/Products';
+import { BasketList } from './layouts/BasketList';
+import { Footer } from './layouts/Footer';
 import { mediaBreakpointDown } from './lib/mediaQueries';
 import { useSelector } from 'react-redux';
 

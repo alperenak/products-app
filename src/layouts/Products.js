@@ -9,10 +9,10 @@ import { getProducts } from '../store/actions/products/getProducts';
 import { getProductsByItemType } from '../store/actions/products/getProductsByItemType';
 import { getTags } from '../store/actions/tags/getTags';
 import { TYPES } from '../store/types';
-import { ButtonGroup } from './ButtonGroup';
-import { Loading } from './Loading';
-import { Pagination } from './Pagination';
-import { ProductCard } from './ProductCard';
+import { ButtonGroup } from '../components/ButtonGroup';
+import { Loading } from '../components/Loading';
+import { Pagination } from '../components/Pagination';
+import { ProductCard } from '../components/ProductCard';
 
 const ITEM_TYPES = [
   { id: 'mug', value: 'mug' },

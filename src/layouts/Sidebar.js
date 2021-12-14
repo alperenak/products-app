@@ -5,10 +5,10 @@ import { mediaBreakpointDown } from '../lib/mediaQueries';
 import { filterBrands } from '../store/actions/brands/filterBrands';
 import { filterTags } from '../store/actions/tags/filterTags';
 import { TYPES } from '../store/types';
-import { Card } from './Card';
-import { Checkbox } from './Checkbox';
-import { Input } from './Input';
-import { Radios } from './Radios';
+import { Card } from '../components/Card';
+import { Checkbox } from '../components/Checkbox';
+import { Input } from '../components/Input';
+import { Radios } from '../components/Radios';
 
 const SORTING_OPTIONS = [
   { id: 'priceLowToHigh', label: 'Price low to high' },

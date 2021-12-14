@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from '../assets/icons/logo.svg';
 import { ReactComponent as Basket } from '../assets/icons/basket.svg';
 import { ReactComponent as Menu } from '../assets/icons/menu.svg';
 import { mediaBreakpointDown } from '../lib/mediaQueries';
-import { Dropdown } from './Dropdown';
+import { Dropdown } from '../components/Dropdown';
 import { BasketList } from './BasketList';
 import { useDispatch, useSelector } from 'react-redux';
 import { TYPES } from '../store/types';

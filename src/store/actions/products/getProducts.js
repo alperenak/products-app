@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { PRODUCTS_PER_PAGE } from '../../../components/Products';
+import { PRODUCTS_PER_PAGE } from '../../../layouts/Products';
 import { TYPES } from '../../types';
 
 export const getProducts =

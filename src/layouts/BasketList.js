@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { TYPES } from '../store/types';
-import { Counter } from './Counter';
+import { Counter } from '../components/Counter';
 
 const StyledBasketList = styled.div`
   background: #1ea4ce;
