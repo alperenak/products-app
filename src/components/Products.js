@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { mediaBreakpointDown } from '../lib/mediaQueries';
 import { getBrands } from '../store/actions/brands/getBrands';
-import { getAllCompanies } from '../store/actions/companies/getAllCompanies';
+import { getCompanies } from '../store/actions/companies/getCompanies';
 import { getAllProducts } from '../store/actions/products/getAllProducts';
 import { getProducts } from '../store/actions/products/getProducts';
 import { getProductsByItemType } from '../store/actions/products/getProductsByItemType';
-import { getAllTags } from '../store/actions/tags/getAllTags';
+import { getTags } from '../store/actions/tags/getTags';
 import { TYPES } from '../store/types';
 import { ButtonGroup } from './ButtonGroup';
 import { Loading } from './Loading';
@@ -107,7 +107,7 @@ export const Products = () => {
 
   React.useEffect(() => {
     dispatch(getAllProducts());
-    dispatch(getAllCompanies());
+    dispatch(getCompanies());
   }, [dispatch]);
 
   React.useEffect(() => {
@@ -117,7 +117,7 @@ export const Products = () => {
   }, [dispatch, allCompanies, filteredProducts]);
 
   React.useEffect(() => {
-    if (filteredProducts.length !== 0) dispatch(getAllTags(filteredProducts));
+    if (filteredProducts.length !== 0) dispatch(getTags(filteredProducts));
   }, [dispatch, filteredProducts]);
 
   React.useEffect(() => {

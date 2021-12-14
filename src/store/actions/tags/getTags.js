@@ -1,6 +1,6 @@
 import { TYPES } from '../../types';
 
-export const getAllTags = products => async dispatch => {
+export const getTags = products => async dispatch => {
   const tags = [];
   const allTags = [];
 

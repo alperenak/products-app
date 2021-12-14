@@ -43,4 +43,5 @@ export const ButtonGroup = ({ data, onChange, selectedButtonId, ...rest }) => {
 ButtonGroup.propTypes = {
   data: Proptypes.array.isRequired,
   onChange: Proptypes.func.isRequired,
+  selectedButtonId: Proptypes.string,
 };

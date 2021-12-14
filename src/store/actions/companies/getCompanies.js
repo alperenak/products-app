@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { TYPES } from '../../types';
 
-export const getAllCompanies = () => async dispatch => {
+export const getCompanies = () => async dispatch => {
   const { data } = await axios.get('https://marketapp-api.herokuapp.com/companies');
   try {
     dispatch({

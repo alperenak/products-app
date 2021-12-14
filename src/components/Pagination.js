@@ -190,4 +190,5 @@ export const Pagination = ({ pageCount, onChange, selectedPageIndex = 0, ...rest
 Pagination.propTypes = {
   pageCount: Proptypes.number.isRequired,
   selectedPageIndex: Proptypes.number.isRequired,
+  onChange: Proptypes.func.isRequired,
 };
