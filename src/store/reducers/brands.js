@@ -18,7 +18,12 @@ export const brandsReducer = (state = initialState, action) => {
     case TYPES.INCLUDE_SELECTED_BRANDS:
       return {
         ...state,
-        selectedBrands: [...state.selectedBrands, action.payload],
+        selectedBrands:
+          state.selectedBrands.length > 0 && state.selectedBrands.includes('All')
+            ? [...state.selectedBrands, action.payload].filter(tag => tag !== 'All')
+            : action.payload === 'All'
+            ? ['All']
+            : [...state.selectedBrands, action.payload],
       };
 
     case TYPES.EXCLUDE_SELECTED_BRANDS:

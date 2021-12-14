@@ -86,7 +86,7 @@ export const Sidebar = () => {
   const { selectedBrands } = useSelector(state => state.brands);
 
   const { brands, allBrands } = useSelector(state => state.brands);
-  const { tags, allTags } = useSelector(state => state.tags);
+  const { tags, allTags, selectedTags } = useSelector(state => state.tags);
   const dispatch = useDispatch();
 
   const handleOnChangeBrands = (checked, brandName) => {
@@ -98,6 +98,7 @@ export const Sidebar = () => {
     if (checked) dispatch({ type: TYPES.INCLUDE_SELECTED_TAGS, payload: tagsName });
     if (!checked) dispatch({ type: TYPES.EXCLUDE_SELECTED_TAGS, payload: tagsName });
   };
+  console.log(selectedBrands);
 
   return (
     <>
@@ -112,9 +113,9 @@ export const Sidebar = () => {
               <StyledCheckbox
                 label={brand.name}
                 count={brand.count}
-                checked={selectedBrands.includes(brand.name)}
                 onChange={checked => handleOnChangeBrands(checked, brand.name)}
                 key={brand.name}
+                checked={selectedBrands.includes(brand.name)}
               />
             ))}
           </StyledCheckboxContent>
@@ -122,15 +123,17 @@ export const Sidebar = () => {
         <StyledCard title="Tags" type="sm">
           <StyledInput placeholder="Search tags" onChange={e => dispatch(filterTags(allTags, e.target.value))} />
           <StyledCheckboxContent>
-            {tags.map(tag => (
-              <StyledCheckbox
-                label={tag.name}
-                count={tag.count}
-                checked={selectedBrands.includes(tag.name)}
-                onChange={checked => handleOnChangeTags(checked, tag.name)}
-                key={tag.name}
-              />
-            ))}
+            {tags.map(tag => {
+              return (
+                <StyledCheckbox
+                  label={tag.name}
+                  count={tag.count}
+                  onChange={checked => handleOnChangeTags(checked, tag.name)}
+                  key={tag.name}
+                  checked={selectedTags.includes(tag.name)}
+                />
+              );
+            })}
           </StyledCheckboxContent>
         </StyledCard>
       </StyledSidebar>

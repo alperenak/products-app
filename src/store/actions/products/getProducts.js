@@ -8,9 +8,12 @@ export const getProducts =
     const filteredBrands = selectedBrands.includes('All')
       ? []
       : allBrands.filter(brand => selectedBrands.includes(brand.name));
-    const brandsQuery = filteredBrands.map(brand => `&manufacturer=${brand.slug}`).toString();
 
-    const tagsQuery = filteredTags.map(tag => `&tags_like=${tag}`).toString();
+    const brandsQuery = filteredBrands.map(brand => `&manufacturer=${brand.slug}`).join('');
+    const tagsQuery = filteredTags.map(tag => `&tags_like=${tag}`).join('');
+
+    console.log(selectedTags);
+
     const { data, headers } = await axios.get(
       `https://marketapp-api.herokuapp.com/items?_page=${
         selectedPageIndex + 1

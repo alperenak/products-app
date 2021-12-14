@@ -18,7 +18,12 @@ export const tagsReducer = (state = initialState, action) => {
     case TYPES.INCLUDE_SELECTED_TAGS:
       return {
         ...state,
-        selectedTags: [...state.selectedTags, action.payload],
+        selectedTags:
+          state.selectedTags.length > 0 && state.selectedTags.includes('All')
+            ? [...state.selectedTags, action.payload].filter(tag => tag !== 'All')
+            : action.payload === 'All'
+            ? ['All']
+            : [...state.selectedTags, action.payload],
       };
 
     case TYPES.EXCLUDE_SELECTED_TAGS:

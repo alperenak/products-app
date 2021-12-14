@@ -44,7 +44,7 @@ const StyledCheckboxCount = styled.span`
   margin-left: 4px;
 `;
 
-export const Checkbox = ({ checked, label, onChange, count, ...rest }) => {
+export const Checkbox = ({ checked = false, label, onChange, count, ...rest }) => {
   const [isChecked, setIsChecked] = React.useState(checked);
   const handleClick = () => {
     setIsChecked(!isChecked);
@@ -52,7 +52,7 @@ export const Checkbox = ({ checked, label, onChange, count, ...rest }) => {
   };
 
   React.useEffect(() => {
-    if (checked) setIsChecked(checked);
+    setIsChecked(checked);
   }, [checked]);
 
   return (
