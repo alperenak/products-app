@@ -126,8 +126,6 @@ export const Products = () => {
 
   React.useEffect(() => dispatch(getProductsByItemType(allProducts, itemType)), [dispatch, allProducts, itemType]);
 
-  console.log(productsLoading);
-
   return (
     <StyledProducts>
       <StyledProductTitle>Products</StyledProductTitle>

@@ -13,8 +13,6 @@ export const getProducts =
     const brandsQuery = filteredBrands.map(brand => `&manufacturer=${brand.slug}`).join('');
     const tagsQuery = filteredTags.map(tag => `&tags_like=${tag}`).join('');
 
-    console.log(selectedTags);
-
     const { data, headers } = await axios.get(
       `https://marketapp-api.herokuapp.com/items?_page=${
         selectedPageIndex + 1

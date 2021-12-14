@@ -74,12 +74,15 @@ const StyledBasketWrapper = styled.div`
 `;
 
 const StyledBasketList = styled(BasketList)`
-  margin-top: 20px;
+  display: none;
+
+  ${mediaBreakpointDown(1290)} {
+    display: flex;
+    margin-top: 20px;
+  }
 `;
 
 const StyledMenu = styled(Menu)`
-  display: none;
-
   ${mediaBreakpointDown(980)} {
     display: block;
     position: absolute;
