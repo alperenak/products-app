@@ -126,7 +126,7 @@ export const Header = () => {
           <StyledLogo />
         </StyledMenuWrapper>
         <StyledBasketWrapper>
-          <Dropdown content={<StyledBasketList ref={basketListRef} />}>
+          <Dropdown content={<StyledBasketList basketRef={basketListRef} />}>
             <StyledBasket onClick={() => dispatch({ type: TYPES.SET_TOGGLE_BASKET })}>
               <StyledBasketInnerWrapper>
                 <Basket />

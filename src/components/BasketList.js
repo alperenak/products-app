@@ -50,7 +50,7 @@ const StyledCounterWrapper = styled.div`
   color: #191919;
 `;
 
-export const BasketList = ({ ref, ...rest }) => {
+export const BasketList = ({ className, basketRef }) => {
   const { basketList, totalPrice } = useSelector(state => state.basket);
 
   const dispatch = useDispatch();
@@ -67,17 +67,19 @@ export const BasketList = ({ ref, ...rest }) => {
     if (count === 0) dispatch({ type: TYPES.REMOVE_FROM_BASKET_LIST, payload: name });
     else dispatch({ type: TYPES.SET_BASKET_ITEM_QUANTITY, payload: { name, count } });
   };
+
   return (
-    <StyledBasketList ref={ref} {...rest}>
+    <StyledBasketList className={className} ref={basketRef}>
       <StyledBasketInnerWrapper>
         <StyledCounterWrapper>
           {basketList.length !== 0
             ? basketList.map(item => (
                 <Counter
+                  key={item.name}
                   price={item.price}
                   name={item.name}
                   itemCount={item.count}
-                  onChange={count => handleOnChange(item.name, count)}
+                  onChangeCount={count => handleOnChange(item.name, count)}
                 />
               ))
             : 'No items in basket'}

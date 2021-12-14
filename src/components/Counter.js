@@ -63,7 +63,7 @@ const StyledCount = styled.div`
   letter-spacing: 0px;
 `;
 
-export const Counter = ({ name, price, itemCount, onChange }) => {
+export const Counter = ({ name, price, itemCount, onChangeCount }) => {
   const [count, setCount] = React.useState(itemCount);
 
   React.useEffect(() => setCount(itemCount), [itemCount]);
@@ -71,13 +71,13 @@ export const Counter = ({ name, price, itemCount, onChange }) => {
   const handleDecreaseCount = () => {
     if (count > 0) {
       setCount(count - 1);
-      if (onChange) onChange(count - 1);
+      if (onChangeCount) onChangeCount(count - 1);
     }
   };
 
   const handleIncreaseCount = () => {
     setCount(count + 1);
-    if (onChange) onChange(count + 1);
+    if (onChangeCount) onChangeCount(count + 1);
   };
 
   return (
@@ -99,5 +99,5 @@ Counter.propTypes = {
   name: Proptypes.string.isRequired,
   price: Proptypes.number.isRequired,
   itemCount: Proptypes.number.isRequired,
-  onChange: Proptypes.string.isRequired,
+  onChangeCount: Proptypes.func.isRequired,
 };

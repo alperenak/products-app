@@ -135,6 +135,7 @@ export const Products = () => {
       <StyledProductContent>
         {products.map(product => (
           <StyledProductCard
+            key={product.name}
             name={product.name}
             price={product.price}
             image="https://picsum.photos/200/200"
