@@ -72,7 +72,7 @@ const StyledBackgroundFilter = styled.div`
     background: rgba(30, 164, 206);
     opacity: ${({ isOpen }) => (isOpen ? '0.5' : '0')};
     visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
-    left: 296px;
+    left: 320px;
     top: 76.68px;
     height: 100%;
     width: 100%;
