@@ -32,6 +32,7 @@ const StyledSidebar = styled.div`
     margin: 76.63px 0;
     z-index: 1;
     padding: 38.36px 10px;
+    overflow-y: auto;
 
     body {
       overflow: ${({ isOpen }) => (isOpen ? 'hidden' : 'auto')};
