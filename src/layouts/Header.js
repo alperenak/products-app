@@ -129,7 +129,6 @@ export const Header = () => {
   const { totalPrice } = useSelector(state => state.basket);
   const { sidebarIsOpen } = useSelector(state => state.sidebar);
 
-  console.log(sidebarIsOpen);
   return (
     <StyledHeader>
       <StyledHeaderInnerWrapper>
