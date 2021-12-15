@@ -36,6 +36,13 @@ const StyledSidebar = styled.div`
     padding-bottom: 100px;
     -webkit-overflow-scrolling: touch;
   }
+
+  ${mediaBreakpointDown(500)} {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 const StyledCard = styled(Card)`
@@ -72,12 +79,15 @@ const StyledBackgroundFilter = styled.div`
     background: rgba(30, 164, 206);
     opacity: ${({ isOpen }) => (isOpen ? '0.5' : '0')};
     visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
-    left: 320px;
+    left: 316px;
     top: 76.68px;
     height: 100%;
     width: 100%;
     transition: ${({ isOpen }) => isOpen && '0.2s opacity'};
     z-index: 1;
+  }
+  ${mediaBreakpointDown(500)} {
+    display: none;
   }
 `;
 
