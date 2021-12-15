@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import styled from 'styled-components';
-import { ReactComponent as Check } from '../assets/icons/vector.svg';
+import { Icon } from './Icons';
 
 const StyledRadiosContent = styled.div``;
 
@@ -23,7 +23,7 @@ const StyledRadio = styled.div`
   height: 22px;
   border-radius: 50%;
   background: #ffffff;
-  border: 2px solid ${({ isActive }) => (isActive ? '#1EA4CE' : '#dfdee2')};
+  border: 2px solid ${({ isActive }) => (isActive ? '#1ea4ce' : '#dfdee2')};
   transition: 0.2s all;
 `;
 
@@ -33,6 +33,12 @@ const StyledRadioLabel = styled.div`
   line-height: 18px;
   margin-left: 12px;
   color: #525252;
+`;
+
+const StyledIcon = styled(Icon)`
+  width: 10px;
+  height: 7px;
+  stroke: #1ea4ce;
 `;
 
 export const Radios = ({ data, onChange, selectedOptionId, ...rest }) => {
@@ -48,7 +54,7 @@ export const Radios = ({ data, onChange, selectedOptionId, ...rest }) => {
       {data.map(item => (
         <StyledRadioWrapper onClick={() => handleClick(item.id)} key={item.id}>
           <StyledRadio isActive={item.id === selectedRadioId}>
-            {item.id === selectedRadioId && <Check stroke="#1ea4cc" />}
+            {item.id === selectedRadioId && <StyledIcon name="vector" />}
           </StyledRadio>
           <StyledRadioLabel>{item.label}</StyledRadioLabel>
         </StyledRadioWrapper>

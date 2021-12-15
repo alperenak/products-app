@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as LoadingIcon } from '../assets/icons/loading.svg';
+import { Icon } from './Icons';
 
 const StyledLoading = styled.div`
   width: 100%;
@@ -14,7 +14,7 @@ const StyledLoading = styled.div`
   background-color: rgba(255, 255, 255, 0.7);
 `;
 
-const StyledLoadingIcon = styled(LoadingIcon)`
+const StyledIcon = styled(Icon)`
   width: 100px;
   height: 100px;
 `;
@@ -22,7 +22,7 @@ const StyledLoadingIcon = styled(LoadingIcon)`
 export const Loading = () => {
   return (
     <StyledLoading>
-      <StyledLoadingIcon />
+      <StyledIcon name="loading" />
     </StyledLoading>
   );
 };

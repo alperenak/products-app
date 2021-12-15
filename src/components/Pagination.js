@@ -2,10 +2,8 @@ import Proptypes from 'prop-types';
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
-import { ReactComponent as NextIcon } from '../assets/icons/arrow-right.svg';
-import { ReactComponent as PrevIcon } from '../assets/icons/arrow-left.svg';
-import { ReactComponent as ThreeDots } from '../assets/icons/threeDots.svg';
 import { mediaBreakpointDown } from '../lib/mediaQueries';
+import { Icon } from './Icons';
 
 const StyledLabel = styled.div`
   display: flex;
@@ -145,9 +143,11 @@ const StyledLabelText = styled.div`
   margin: 0 7px;
 `;
 
-const StyledThreeDots = styled(ThreeDots)`
+const StyledThreeDotsIcon = styled(Icon)`
   fill: #697488;
   cursor: pointer;
+  height: 3px;
+  width: 10px;
 
   &:hover {
     fill: #1ea4ce;
@@ -160,16 +160,16 @@ export const Pagination = ({ pageCount, onChange, selectedPageIndex = 0, ...rest
   const getLabel = React.useCallback(({ isNext }) => {
     return (
       <StyledLabel>
-        {!isNext && <PrevIcon />}
+        {!isNext && <Icon name="arrowLeft" size={14} />}
         <StyledLabelText isNext={isNext}>{isNext ? 'Next' : 'Prev'}</StyledLabelText>
-        {isNext && <NextIcon />}
+        {isNext && <Icon name="arrowRight" size={14} />}
       </StyledLabel>
     );
   }, []);
 
   return (
     <StyledReactPaginate
-      breakLabel={<StyledThreeDots />}
+      breakLabel={<StyledThreeDotsIcon name="threeDots" />}
       nextLabel={getLabel({ isNext: true })}
       breakLinkClassName="rp-break-link"
       pageClassName="rp-page"

@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import styled from 'styled-components';
-import { ReactComponent as Check } from '../assets/icons/vector.svg';
+import { Icon } from './Icons';
 
 const StyledCheckbox = styled.div`
   display: flex;
@@ -45,6 +45,12 @@ const StyledCheckboxCount = styled.span`
   margin-left: 4px;
 `;
 
+const StyledIcon = styled(Icon)`
+  width: 10.67px;
+  height: 7.33px;
+  stroke: #fff;
+`;
+
 export const Checkbox = ({ checked = false, label, onChange, count, ...rest }) => {
   const [isChecked, setIsChecked] = React.useState(checked);
   const handleClick = () => {
@@ -58,9 +64,7 @@ export const Checkbox = ({ checked = false, label, onChange, count, ...rest }) =
 
   return (
     <StyledCheckboxWrapper onClick={handleClick} {...rest}>
-      <StyledCheckbox isChecked={isChecked}>
-        {isChecked && <Check width={10.67} height={7.33} stroke="#fff" />}
-      </StyledCheckbox>
+      <StyledCheckbox isChecked={isChecked}>{isChecked && <StyledIcon name="vector" />}</StyledCheckbox>
       <StyledCheckboxLabel title={`${label} (${count})`}>
         <StyledCheckboxLabelText>{label}</StyledCheckboxLabelText>
         <StyledCheckboxCount> ({count})</StyledCheckboxCount>

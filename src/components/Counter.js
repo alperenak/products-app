@@ -1,8 +1,7 @@
 import Proptypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as Plus } from '../assets/icons/plus.svg';
-import { ReactComponent as Minus } from '../assets/icons/minus.svg';
+import { Icon } from './Icons';
 
 const StyledCounterWrapper = styled.div`
   display: flex;
@@ -64,6 +63,12 @@ const StyledCount = styled.div`
   letter-spacing: 0px;
 `;
 
+const StyledIcon = styled(Icon)`
+  cursor: pointer;
+  width: ${({ name }) => (name === 'minus' ? '10px' : '12px')};
+  height: ${({ name }) => (name === 'minus' ? '3px' : '12px')};
+`;
+
 export const Counter = ({ name, price, itemCount, onChangeCount }) => {
   const [count, setCount] = React.useState(itemCount);
 
@@ -88,9 +93,9 @@ export const Counter = ({ name, price, itemCount, onChangeCount }) => {
         <StyledProductPrice>₺{price}</StyledProductPrice>
       </StyledProduct>
       <StyledCounter>
-        <Minus onClick={handleDecreaseCount} cursor="pointer" />
+        <StyledIcon name="minus" onClick={handleDecreaseCount} color="#1ea5c3" />
         <StyledCount>{count}</StyledCount>
-        <Plus onClick={handleIncreaseCount} cursor="pointer" />
+        <StyledIcon name="plus" onClick={handleIncreaseCount} color="#1ea5c3" />
       </StyledCounter>
     </StyledCounterWrapper>
   );

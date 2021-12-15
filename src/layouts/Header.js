@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as Logo } from '../assets/icons/logo.svg';
-import { ReactComponent as Basket } from '../assets/icons/basket.svg';
-import { ReactComponent as Menu } from '../assets/icons/menu.svg';
 import { mediaBreakpointDown } from '../lib/mediaQueries';
 import { Dropdown } from '../components/Dropdown';
 import { BasketList } from './BasketList';
 import { useDispatch, useSelector } from 'react-redux';
 import { TYPES } from '../store/types';
+import { Icon } from '../components/Icons';
 
 const StyledHeader = styled.div`
   width: 100%;
@@ -31,10 +29,18 @@ const StyledHeaderInnerWrapper = styled.div`
   position: relative;
 `;
 
-const StyledLogo = styled(Logo)`
+const StyledLogoIcon = styled(Icon)`
+  width: 142px;
+  height: 41px;
+
   ${mediaBreakpointDown(500)} {
     width: 100px;
   }
+`;
+
+const StyledBasketIcon = styled(Icon)`
+  width: 24px;
+  height: 26px;
 `;
 
 const StyledBasket = styled.div`
@@ -82,15 +88,14 @@ const StyledBasketList = styled(BasketList)`
   }
 `;
 
-const StyledMenu = styled(Menu)`
+const StyledIcon = styled(Icon)`
   display: none;
 
   ${mediaBreakpointDown(980)} {
     display: block;
     position: absolute;
     left: 20px;
-    width: 24px;
-    color: #fff;
+    stroke: #fff;
     cursor: pointer;
   }
 
@@ -122,19 +127,25 @@ export const Header = () => {
   const basketListRef = React.useRef(null);
   const dispatch = useDispatch();
   const { totalPrice } = useSelector(state => state.basket);
+  const { sidebarIsOpen } = useSelector(state => state.sidebar);
 
+  console.log(sidebarIsOpen);
   return (
     <StyledHeader>
       <StyledHeaderInnerWrapper>
         <StyledMenuWrapper>
-          <StyledMenu onClick={() => dispatch({ type: TYPES.SET_TOGGLE_SIDEBAR })} />
-          <StyledLogo />
+          {sidebarIsOpen ? (
+            <StyledIcon name="close" size={24} onClick={() => dispatch({ type: TYPES.SET_TOGGLE_SIDEBAR })} />
+          ) : (
+            <StyledIcon name="menu" size={24} onClick={() => dispatch({ type: TYPES.SET_TOGGLE_SIDEBAR })} />
+          )}
+          <StyledLogoIcon name="logo" />
         </StyledMenuWrapper>
         <StyledBasketWrapper>
           <Dropdown content={<StyledBasketList basketRef={basketListRef} />}>
             <StyledBasket onClick={() => dispatch({ type: TYPES.SET_TOGGLE_BASKET })}>
               <StyledBasketInnerWrapper>
-                <Basket />
+                <StyledBasketIcon name="basket" />
                 <StyledBasketPrice>₺ {totalPrice}</StyledBasketPrice>
               </StyledBasketInnerWrapper>
             </StyledBasket>
