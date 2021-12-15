@@ -61,6 +61,8 @@ products-app/
 ```
 
 ## Tech Stack
+I used these technologies in the project:
+
 - [React](https://tr.reactjs.org/)
 - [Redux](https://redux.js.org/)
 - [Styled Components](https://styled-components.com/)
