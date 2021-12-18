@@ -19,7 +19,7 @@ You will also see any lint errors in the console
 
 ## Links
 Products App Backend : [API (JSON Server)](https://products-app-market.herokuapp.com/)<br>
-Products App Frontend :  [Netlify App](https://products-app-market.herokuapp.com/)
+Products App Frontend :  [Netlify App](https://app-market.netlify.app/)
 
 ## Folder Structure
 
